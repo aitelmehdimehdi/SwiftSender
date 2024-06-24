@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link rel="stylesheet" href="../CSS/managerStyle.css" />
+    <link rel="stylesheet" href="../../static/CSS/managerStyle.css">
+    <link rel="shortcut icon" href="../img/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+</head>
+<body>
+<div class="menu__wrapper">
+    <div class="menu__bar">
+        <a
+                href="/manager"
+                title="Logo"
+        >
+            <img
+                    class="logo"
+                    src="../img/logo.png"
+                    title='Logo'
+                    alt='Logo'
+            >
+        </a>
+        <span>ACCOUNT MANAGER </span>
+        <img
+                class="menu-icon"
+                src="assets/burger-menu.svg"
+                title='Burger Menu'
+                alt='Burger Menu'
+                onclick="toggleMenu(this)"
+        >
+        <ul class="navigation">
+            <li><a href="/manager">
+                <!-- <i class="fas fa-home"></i> -->
+                <span class="nav-item">Home</span>
+            </a>
+            </li>
+            <li>
+                <a href="/manager/client">
+                    <!--<i class="fas fa-user"></i> -->
+                    <span class="nav-item">Client</span>
+                </a>
+            </li>
+            <li><a href="/manager/conducteur">
+                <!-- <i class="fas fa-user"></i> -->
+                <span class="nav-item">Conducteur</span>
+            </a>
+            </li>
+            <li><a href="/manager/vehicule">
+                <!-- <i class="fas fa-car"></i> -->
+                <span class="nav-item">Vehicule</span>
+            </a>
+            </li>
+            <li><a href="/">
+
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Logout</span>
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script th:if="${message}" th:inline="javascript">
+    var message=[[${message}]];
+    if(message==='valid')
+    {
+        toastr.success(message);
+    }
+    else {
+        if (message==="invalid"){
+            toastr.error(message);
+        }
+    }
+</script>
+<section class="main">
+    <section class="main-body">
+        <div class="main-top1">
+            <h2>Dashboard :</h2>
+        </div>
+        <div class="main-skills">
+            <div class="card">
+                <i class="fas fa-solid fa-truck"></i>
+                <h3>Les Camions</h3>
+                <p>Le nombre des camions</p>
+                <button th:text="${nbrCamions}">msh hadi</button>
+            </div>
+            <div class="card">
+                <i class="fas fa-solid fa-truck-moving"></i>
+                <h3>Les C.remorque</h3>
+                <p>Le nombre des c.remorques</p>
+                <button th:text="${nbrRemorques}">msh hadi</button>
+            </div>
+            <div class="card">
+                <i class="fas fa-solid fa-caravan"></i>
+                <h3>Les trafics</h3>
+                <p>Le nombre des traffics</p>
+                <button th:text="${nbrTraffics}">msh hadi</button>
+            </div>
+            <div class="card">
+                <i class="fas fa-solid fa-truck-pickup"></i>
+                <h3>Les pick ups</h3>
+                <p>Le nombre des pick ups </p>
+                <button th:text="${nbrPickUps}">msh hadi</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="main-top2">
+            <h2>Liste des vehicules:</h2>
+        </div>
+        <div class="historique">
+            <a class="button" href="/manager/addVehicule">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Ajouter une Vehicule</span>
+                </span>
+            </a>
+            <table width="100%">
+                <thead>
+                <tr>
+                    <td>Type</td>
+                    <td>Matricule</td>
+                    <td>Assurance</td>
+                    <td>Visite</td>
+                    <td>Carte Grise</td>
+                    <td>Active</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="vehicule : ${vehicules}">
+                    <td class="people">
+                        <div>
+                            <h5 th:text="${vehicule.typeVehicule}">Pick up</h5>
+                            <p ></p>
+                        </div>
+                    </td>
+                    <td class="people-des">
+                        <h5 th:text="${vehicule.matricule}">Abdellah lachgueur</h5>
+                    </td>
+                    <td class="visite">
+                        <h5 th:text="${vehicule.dateDeFinDassurance}">3mois 8jours</h5>
+                    </td>
+                    <td class="assurence">
+                        <h5 th:text="${vehicule.nextVisite}">0mois 20jours</h5>
+                    </td>
+                    <td class="assurence">
+                        <h5 th:text="${vehicule.carteGrise}">0mois 20jours</h5>
+                    </td>
+                    <td class="assurence">
+                        <h5 th:text="${vehicule.active}">0mois 20jours</h5>
+                    </td>
+                    <td class="edit">
+                        <a th:href=@{'updateVehicule/'+${vehicule.matricule}+'/'+${vehicule.typeVehicule}}>Modifie</a>
+                    </td>
+                    <td class="delete">
+                        <!--th:href=""-->
+                        <a th:href=@{'vehicule_details/'+${vehicule.matricule}}>more infos</a>
+                    </td>
+                    <td class="delete">
+                        <!--th:href=""-->
+                        <a href="https://www.google.com/maps">track</a>
+                    </td>
+                    <td class="delete">
+                        <a th:href=@{'deleteVehicule/'+${vehicule.matricule}+'/'+${vehicule.typeVehicule}}>supprimer</a>
+                    </td>
+                    <!--+'/'+${vehicule.typeVehicule}
+                    +'/'+${vehicule.typeVehicule}-->
+                </tr>
+                <!-- <tr>
+                    <td class="add">
+                        <a href="/manager/addVehicule" ><button>Ajouter un vehicule...</button></a>
+                    </td>
+                </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+<script th:if="${message}" th:inline="javascript">
+    var message=[[${message}]];
+    if(message==='valid')
+    {
+        toastr.success(message);
+    }
+    else {
+        if (message==="invalid"){
+            toastr.error(message);
+        }
+    }
+</script>
+<script src="../JS/manager.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+</html>

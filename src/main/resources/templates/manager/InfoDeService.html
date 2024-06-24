@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/PlusD'info.css">
+    <link rel="shortcut icon" href="../../img/logo.png">
+    <title>Information</title>
+</head>
+
+<body>
+        <div class="main-skills">
+            <div class="container">
+                <div class="card">
+                    <div class="title">
+                        <h1>Service</h1>
+                        <p>Carte d'information</p>
+                    </div>
+                    <div class="image">
+                        <div class="outer">
+                            <div class="inner">
+                                <img src="../../img/service.jpg" alt="Client">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="name" th:text="${service.num_service}">
+
+                    </div>
+                    <div class="details">
+                        <div class="col" >
+                            <table >
+                                <tr><td><p>active :</p></td><td th:text="${service.active}">24/04/2024</td></tr>
+                                <tr><td>dateService :</td><td th:text="${service.dateService}">24/04/2024</td></tr>
+                                <tr><td>Vsource :</td><td th:text="${service.villeSource}">VILLESOURCE</td></tr>
+                                <tr><td>VDest :</td><td th:text="${service.villeDest}">VILLESOURCE</td></tr>
+                                <tr><td>Dans la ville :</td><td th:text="${service.dansLaVille}">VILLESOURCE</td></tr>
+                                <tr><td>Vehicule :</td><td th:text="${service.typeVehicule}">VILLESOURCE</td></tr>
+                                <tr><td>Price :</td><td th:text="${service.price}">VILLESOURCE</td></tr>
+                                <tr th:each="cond : ${service.conducteur}"><td>Conducteur :</td><td th:text="${cond.fullname}">VILLESOURCE</td></tr>
+                                <tr><td>Client :</td><td th:text="${service.clientEntity.fullname}">VILLESOURCE</td></tr>
+                            </table>
+                        </div>
+                        <div class="col">
+                            <img src="../../img/logo.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="card">
+                    <div class="title">
+                        <h1>Client</h1>
+                        <p>Carte d'information</p>
+                    </div>
+                    <div class="image">
+                        <div class="outer">
+                            <div class="inner">
+                                <img src="../../img/client.jpg" alt="Client">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="name" th:text="${client.fullname}">
+
+                    </div>
+                    <div class="details">
+                        <div class="col">
+                            <table>
+                                <tr><td>Genre : </td><td th:text="${client.genre}"></td></tr>
+                                <tr><td>DateNaissance : </td><td th:text="${client.dateNaissance}"></td></tr>
+                                <tr><td>Telephone : </td><td th:text="${client.telephone}"></td></tr>
+                                <tr><td> Email :</td><td th:text="${client.email}"></td></tr>
+                            </table>
+                        </div>
+                        <div class="col">
+                            <img src="../../img/logo.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" th:each="conducteur : ${conducteurs}">
+                <div class="card">
+                    <div class="title">
+                        <h1>Conducteur</h1>
+                        <p>Carte d'information</p>
+                    </div>
+                    <div class="image">
+                        <div class="outer">
+                            <div class="inner">
+                                <img src="../../img/conducteur.jpg" alt="Conducteur">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="name" th:text="${conducteur.fullname}">
+
+                    </div>
+                    <div class="details">
+                        <div class="col" >
+                            <table>
+                                <tr><td>Active : </td><td th:text="${conducteur.active}"></td></tr>
+                                <tr><td>Genre : </td><td th:text="${conducteur.genre}"></td></tr>
+                                <tr><td>DateNaissance : </td><td th:text="${conducteur.dateNaissance}"></td></tr>
+                                <tr><td>Telephone : </td> <td th:text="${conducteur.telephone}"></td></tr>
+                                <tr><td>Email : </td> <td th:text="${conducteur.email}"></td></tr>
+                                <tr><td>Salary : </td> <td th:text="${conducteur.salary}"></td></tr>
+                            </table>
+                        </div>
+                        <div class="col">
+                            <img src="../../img/logo.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" th:each="vehicule : ${vehicules}">
+                <div class="card">
+                    <div class="title">
+                        <h1>Vehicule</h1>
+                        <p>Carte d'information</p>
+                    </div>
+                    <div class="image">
+                        <div class="outer">
+                            <div class="inner">
+                                <img src="../../img/camion.jpg" alt="Client">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="name" th:text="${vehicule.typeVehicule}">
+
+                    </div>
+                    <div class="details">
+                        <div class="col" >
+                            <table>
+                                <tr><td>Matricule : </td><td th:text="${vehicule.matricule}"></td></tr>
+                                <tr><td>Active : </td><td th:text="${vehicule.active}"></td></tr>
+                                <tr><td>dateDeFinDassurance : </td><td th:text="${vehicule.dateDeFinDassurance}"></td></tr>
+                                <tr><td>dateDeFinVisite : </td><td th:text="${vehicule.nextVisite}"></td></tr>
+                                <tr><td>dateDeFinCarteGris : </td><td th:text="${vehicule.carteGrise}"></td></tr>
+                            </table>
+                        </div>
+                        <div class="col">
+                            <img src="../../img/logo.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

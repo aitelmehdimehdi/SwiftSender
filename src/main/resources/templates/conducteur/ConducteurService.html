@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>-->
+    <link rel="shortcut icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../CSS/Conducteurstyle.css">
+    <!--<link rel="stylesheet" href="../static/CSS/clientStyle.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <title>Home</title>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+    <div class="sidebar">
+        <a href="/conducteur" class="logo">
+            <div class="logo-name" id="logo-name"><span>S</span>wift<span>S</span>ender</div>
+        </a>
+        <ul class="side-menu">
+            <li><a href="/conducteur"><i class='bx bxs-dashboard'></i>Home</a></li>
+             <li class="active"><a href="/conducteur/service"><i class='bx bx-store-alt'></i>Service</a></li>
+            <!--<li ><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li>
+            <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
+            <li><a href="#"><i class='bx bx-group'></i>Users</a></li>-->
+            <li><a href="/conducteur/setting"><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="/" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+<!-- End of Sidebar -->
+<!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="" class="text-dark">
+                <i class="fas fa-regular fa-bell" ></i>
+            </a>
+            <a href="#" class="profile">
+                <img src="../img/logo.png">
+            </a>
+        </nav>
+<!-- End of Navbar -->
+ <section class="main1">
+            <div class="main-top1">
+                <h2>Mes Services :</h2>
+            </div>
+            <div class="list1">
+              <table>
+                <thead>
+                  <tr>
+                    <th>num service</th>
+                    <th>Date</th>
+                    <th>Dans La ville</th>
+                    <th>Type De Vehicule</th>
+                    <th>Etat</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="serv : ${services}">
+                    <td th:text="${serv.serviceEntity.num_service}">1</td>
+                    <td th:text="${serv.serviceEntity.dateService}">2, Aug, 2022</td>
+                    <td th:text="${serv.serviceEntity.dansLaVille}">Dans la ville</td>
+                    <td th:text="${serv.serviceEntity.typeVehicule}">Camion</td>
+                    <td th:text="${serv.serviceEntity.active}">Camion</td>
+                    <td><a th:href=@{'/conducteur/finService/'+${serv.serviceEntity.num_service}}>Fin Service</a></td>
+                    <td><a th:href=@{'/conducteur/service_details/'+${serv.serviceEntity.num_service}}>more infos</a></td>
+                    <!--<td th:value="${serv.}">3456735</td>
+                    <td th:value="${serv.}">Dans la ville</td>
+                    <td th:value="${serv.}">599DH</td>
+                    <td th:value="${serv.}">dir f back 10%-15% mn tarif hna</td>
+                    <td th:value="${serv.}">Terminée</td>-->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+</section></div>
+<script src="../JS/conducteur.js"></script>
+</body>
+</html>

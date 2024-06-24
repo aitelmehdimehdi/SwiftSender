@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link rel="stylesheet" href="../CSS/managerStyle.css" />
+    <link rel="shortcut icon" href="../img/logo.png">
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+<div class="menu__wrapper">
+    <div class="menu__bar">
+        <a
+                href="/manager"
+                title="Logo"
+        >
+            <img
+                    class="logo"
+                    src="../img/logo.png"
+                    title='Logo'
+                    alt='Logo'
+            >
+        </a>
+        <span>ACCOUNT MANAGER </span>
+        <img
+                class="menu-icon"
+                src="assets/burger-menu.svg"
+                title='Burger Menu'
+                alt='Burger Menu'
+                onclick="toggleMenu(this)"
+        >
+        <ul class="navigation">
+            <li><a href="/manager">
+                <!-- <i class="fas fa-home"></i> -->
+                <span class="nav-item">Home</span>
+            </a>
+            </li>
+            <li>
+                <a href="/manager/client">
+                    <!--<i class="fas fa-user"></i> -->
+                    <span class="nav-item">Client</span>
+                </a>
+            </li>
+            <li><a href="/manager/conducteur">
+                <!-- <i class="fas fa-user"></i> -->
+                <span class="nav-item">Conducteur</span>
+            </a>
+            </li>
+            <li><a href="/manager/vehicule">
+                <!-- <i class="fas fa-car"></i> -->
+                <span class="nav-item">Vehicule</span>
+            </a>
+            </li>
+
+            <li><a href="/">
+
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Logout</span>
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<section class="main">
+    <section class="main-body">
+        <div class="container1">
+            <form class="Form" method="post" action="/manager/addVehicule" th:object="${newcar}">
+                <div class="input__wrapper">
+                    <!-- Champ de sélection -->
+                    <select id="vehicleType" class="input__field" required name="typeVehicule">
+                        <!-- Options pour le type de véhicule -->
+                        <option value="" disabled selected hidden>Type de véhicule</option>
+                        <option value="camion">Camion</option>
+                        <option value="remorque">Camion remorque</option>
+                        <option value="traffic">Traffic</option>
+                        <option value="pickUp">Pick up</option>
+                    </select>
+
+                    <!-- Étiquette associée au champ de sélection -->
+                    <label for="vehicleType" class="input__label">
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input  type="text" class="input__field"  placeholder="un text" name="matricule">
+                    <label for class="input__label">
+                        Matricule
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <!-- Champ de saisie pour la date -->
+                    <input type="date" class="input__field" required name="nextVisite">
+                    <!-- Étiquette associée au champ de saisie -->
+                    <label class="input__label">
+                        date de la visite :
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <!-- Champ de saisie pour la date -->
+                    <input type="date" class="input__field" required name="carteGrise">
+                    <!-- Étiquette associée au champ de saisie -->
+                    <label class="input__label">
+                        date de la fin de carte grise :
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <!-- Champ de saisie pour la date -->
+                    <input type="date" class="input__field" required name="dateDeFinDassurance">
+                    <!-- Étiquette associée au champ de saisie -->
+                    <label class="input__label">
+                        Assurance
+                    </label>
+                </div>
+                <div class="button-validation">
+                    <button type="submit" class='cta-button' >
+                        Envoyer
+                    </button>
+                </div>
+            </form>
+            <!-- EndRequest Service Form -->
+
+        </div>
+    </section>
+</section>
+<script src="../JS/manager.js"></script>
+</body>
+</html>            

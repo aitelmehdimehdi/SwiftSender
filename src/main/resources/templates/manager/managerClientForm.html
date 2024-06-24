@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link rel="stylesheet" href="../CSS/managerStyle.css" />
+    <link rel="shortcut icon" href="../img/logo.png">
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+<div class="menu__wrapper">
+    <div class="menu__bar">
+        <a
+                href="/manager"
+                title="Logo"
+        >
+            <img
+                    class="logo"
+                    src="../img/logo.png"
+                    title='Logo'
+                    alt='Logo'
+            >
+        </a>
+        <span>ACCOUNT MANAGER </span>
+        <img
+                class="menu-icon"
+                src="assets/burger-menu.svg"
+                title='Burger Menu'
+                alt='Burger Menu'
+                onclick="toggleMenu(this)"
+        >
+        <ul class="navigation">
+            <li><a href="/manager">
+                <!-- <i class="fas fa-home"></i> -->
+                <span class="nav-item">Home</span>
+            </a>
+            </li>
+            <li>
+                <a href="/manager/client">
+                    <!--<i class="fas fa-user"></i> -->
+                    <span class="nav-item">Client</span>
+                </a>
+            </li>
+            <li><a href="/manager/conducteur">
+                <!-- <i class="fas fa-user"></i> -->
+                <span class="nav-item">Conducteur</span>
+            </a>
+            </li>
+            <li><a href="/manager/vehicule">
+                <!-- <i class="fas fa-car"></i> -->
+                <span class="nav-item">Vehicule</span>
+            </a>
+            </li>
+            <li><a href="/">
+
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Logout</span>
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<section class="main">
+    <section class="main-body">
+        <div class="container1">
+            <form class="Form">
+                <div class="input__wrapper">
+                    <input  type="text" class="input__field" 
+                            placeholder="un text" name="full_name">
+                    <label for class="input__label">
+                        Full name
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input type="email" id="email" pattern=".+@example\.com" size="35" class="input__field"
+                           placeholder="un text" name="email" >
+                    <label for class="input__label">
+                        Entrer l'email:
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input  type="text" class="input__field" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                            placeholder="un text" name="ville_source">
+                    <label for class="input__label">
+                        ville Source
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input id="" type="text" class="input__field" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                           placeholder="un text" name="ville_dest">
+                    <label for class="input__label">
+                        ville Destination
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input id="pdwwd" type="text" class="input__field" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                           placeholder="un text" name="serviceId">
+                    <label for class="input__label">
+                        Service Id
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="input__field"
+                           placeholder="un text">
+                    <label  for class="input__label">
+                        Telephone
+                    </label>
+                </div>
+            </form>
+            <!-- EndRequest Service Form -->
+            <div class="button-validation">
+                <a href="https://learning.atheros.ai" title="Atheros Learning Platform" class='cta-button' >
+                    Envoyer
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>            

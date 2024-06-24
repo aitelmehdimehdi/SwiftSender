@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>-->
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="CSS/clientStyle.css">
+    <link rel="stylesheet" href="../../static/CSS/clientStyle.css">
+    <title>SwiftSender</title>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+    <div class="sidebar">
+        <a href="/client" class="logo">
+            <div class="logo-name" id="logo-name"><span>S</span>wift<span>S</span>ender</div>
+        </a>
+        <ul class="side-menu">
+            <li ><a href="/client" ><i class='bx bxs-dashboard'></i>Home</a></li>
+             <li><a href="/client/service" ><i class='bx bx-store-alt'></i>Service</a></li>
+            <li ><a href="/client/allService"><i class='bx bx-analyse'></i>Tous Services</a></li>
+            <!---<li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
+            <li><a href="#"><i class='bx bx-group'></i>Users</a></li>-->
+            <li><a href="/client/profil" ><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="/logOut" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+<!-- End of Sidebar -->
+<!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="" class="text-dark">
+                <i class="fas fa-regular fa-bell" ></i>
+            </a>
+            <a href="#" class="profile">
+                <img src="../img/logo.png">
+            </a>
+        </nav>
+<!-- End of Navbar -->
+
+        <main>
+
+            <div class="articles">
+
+                <article class="article-card">
+                    <figure>
+                        <img src="../img/4.jpg" alt="Snowy Mountains">
+                    </figure>
+                    <div class="article-preview">
+                        <h2>PICKUP<br>CAR</h2>
+                        <p>Dans Ville  </p>
+                        <p>à partire de : 99 DH</p>
+                        <p>Hors de ville</p>
+                        <p>à partire de : 399 DH</p>
+                        <p>poids Maximale : 0</p>
+                        <p>poids Maximale : 400 KG</p>
+                    </div>
+                </article>
+                <article class="article-card">
+                    <figure>
+                        <img src="../img/5.jpg" alt="Wooden Bridge">
+                    </figure>
+                    <div class="article-preview">
+                        <h2>TRANSIT<br>CAR</h2>
+                        <p>Dans Ville  </p>
+                        <p>à partire de : 249 DH</p>
+                        <p>Hors de ville</p>
+                        <p>à partire de : 499 DH</p>
+                        <p>poids Minimal : 400 KG</p>
+                        <p>poids Maximale : 1 Tonne</p>
+                    </div>
+                </article>
+                <article class="article-card">
+                    <figure>
+                        <img src="../img/2.jpg" alt="Lavender Fields">
+                    </figure>
+                    <div class="article-preview">
+                        <h2>CAMION<br>SIMPLE</h2>
+                        <p>Dans Ville  </p>
+                        <p>à partire de : 599 DH</p>
+                        <p>Hors de ville</p>
+                        <p>à partire de : 999 DH</p>
+                        <p>poids Maximale : 1 Tonne</p>
+                        <p>poids Maximale : 1.7 Tonne</p>
+                    </div>
+                </article>
+                <article class="article-card">
+                    <figure>
+                        <img src="../img/33.jpg" alt="Wooden Bridge">
+                    </figure>
+                    <div class="article-preview">
+                        <h2>CAMION REMORQUE</h2>
+                        <p> Dans Ville  </p>
+                        <p>à partire de : 799 DH</p>
+                        <p>Hors de ville</p>
+                        <p>à partire de : 1499 DH</p>
+                        <p>poids Maximale : 1.7 Tonnes</p>
+                         <p>poids Maximale : 4 Tonnes</p>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+
+
+<!-- Container -->
+                <div class="container">
+
+                </div>
+<!-- End Container -->
+
+        </main>
+    </div>
+
+    <script src="../JS/client.js"></script>
+</body>
+
+</html>

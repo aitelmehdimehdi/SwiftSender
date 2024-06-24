@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+   <meta charset="UTF-8">
+   <title>SwiftSender</title>
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,600" rel="stylesheet">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+   <link rel="stylesheet" href="../CSS/styleLog2.css">
+   <link rel="shortcut icon" href="img/logo.png">
+   <link rel="stylesheet" href="../static/CSS/styleLog2.css">
+   <link rel="stylesheet" href="styleLog2.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+   <section id="formHolder">
+
+      <div class="row">
+
+         <!-- Brand Box -->
+         <div class="col-sm-6 brand">
+            <a href="/" class="logo">
+               <h1><span>S</span>wift<span>S</span>ender</h1>
+            </a>
+
+            <div class="heading">
+               <img src="../img/logo.png" style="height: 150px;">
+               <p>Your Right Choice</p>
+            </div>
+
+            <div class="failed-msg">
+               <p th:text="${message}"></p>
+            </div>
+         </div>
+
+
+         <!-- Form Box -->
+         <div class="col-sm-6 form">
+
+            <!-- Signup Form -->
+            <div class="signup form-peice">
+               <form class="signup-form" action="/signup" method="post" th:object="${addclient}">
+
+                  <div class="form-group">
+                     <label for="name">Prenom</label>
+                     <input type="text" name="prenom" id="name" class="name">
+                     <!-- <span class="error"></span> -->
+                  </div>
+
+                  <div class="form-group">
+                     <label for="name">Nom</label>
+                     <input type="text" name="nom" id="email" class="email">
+                     <!-- <span class="error"></span> -->
+                  </div>
+
+                  <div class="form-group">
+                     <label for="phone">Telephone</label>
+                     <input type="text" name="telephone" id="phone">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="password">Email</label>
+                     <input type="text" name="email" id="password" class="pass">
+                     <!-- <span class="error"></span> -->
+                  </div>
+                  <div class="form-group">
+                     <!-- <label for="password">Genre</label> -->
+                     <div class="group-choice">
+                        male<input type="radio" name="genre" value="male" id="password" class="pass">
+                        female<input type="radio" name="genre" value="female" id="password" class="pass">
+                     </div>
+                     <!-- <span class="error"></span> -->
+                  </div>
+
+                  <!-- <div class="form-group">
+                     <label for="password">date </label>
+                     <input type="date" name="date" id="password" class="pass" autofocus>
+                     <span class="error"></span>
+                  </div> -->
+
+                  <div class="form-group">
+                     <label for="passwordCon">Password</label>
+                     <input type="password" name="password" id="passwordCon" class="passConfirm">
+                     <!-- <span class="error"></span> -->
+                  </div>
+
+                  <div class="CTA">
+                     <input type="submit" value="Signup Now" id="submit">
+                     <a href="/login" class="switch">J'ai un compte!</a>
+                  </div>
+               </form>
+            </div><!-- End Signup Form -->
+         </div>
+      </div>
+
+   </section>
+
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script  src="../JS/log.js"></script>
+</body>
+</html>

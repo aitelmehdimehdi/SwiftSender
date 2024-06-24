@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>-->
+    <link rel="shortcut icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../CSS/clientStyle.css">
+    <title>SwiftSender</title>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <a href="/client" class="logo">
+        <div class="logo-name" id="logo-name"><span>S</span>wift<span>S</span>ender</div>
+    </a>
+    <ul class="side-menu">
+        <li ><a href="/client"><i class='bx bxs-dashboard'></i>Home</a></li>
+        <li ><a href="/client/service"><i class='bx bx-store-alt'></i>Service</a></li>
+        <li ><a href="/client/allService"><i class='bx bx-analyse'></i>Tous Services</a></li>
+        <!--<li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
+        <li><a href="#"><i class='bx bx-group'></i>Users</a></li> -->
+        <li><a href="/client/profil"><i class='bx bx-cog'></i>Settings</a></li>
+    </ul>
+    <ul class="side-menu">
+        <li>
+            <a href="/logOut" class="logout">
+                <i class='bx bx-log-out-circle'></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- End of Sidebar-->
+<!-- Main Content-->
+<div class="content">
+    <!-- Navbar -->
+    <nav>
+        <i class='bx bx-menu'></i>
+        <form action="#">
+            <div class="form-input">
+                <input type="search" placeholder="Search...">
+                <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="theme-toggle" hidden>
+        <label for="theme-toggle" class="theme-toggle"></label>
+        <a href="#" class="notif">
+            <i class='bx bx-bell'></i>
+            <span class="count">12</span>
+        </a>
+        <a href="#" class="profile">
+            <img src="../img/logo.png">
+        </a>
+    </nav>
+    <!-- End of Navbar -->
+    <main>
+        <!-- dashboard -->
+        <!--  Service Form -->
+            <div class="service">
+                    <p class="describe-service">Chez Swift Sender, nous redéfinissons le transport des biens. Nous sommes votre partenaire de confiance pour acheminer vos objets en toute sécurité et efficacité. Notre engagement envers la fiabilité, la transparence et la satisfaction client guide chaque étape du processus. Avec Swift Sender, vous bénéficiez d'une solution de transport sur mesure, adaptée à vos besoins spécifiques. Simplifiez vos expéditions et confiez-nous vos biens, car votre tranquillité d'esprit est notre priorité , Vous pouvezdemander votre service par deux methode soit<br> <span class="marchandise"> choisis le type de transport</span><br> ou <br><span class="marchandise">propose le type de vehicule par rapport a votre marchandise</span>.<br></p>
+                    <div class="espace-button-service-dem">
+                        <a href="/client/service1" class="button-service-dem">Demande de Service avec choisir de vehicule</a>
+                        <a href="/client/service2" class="button-service-dem">Demande de Service Par Description de marchandise</a>
+                    </div>
+
+            </div>
+        <!-- End Service Form -->
+        <!-- End Of Planning -->
+    </main>
+</div>
+
+<script src="../JS/client.js"></script>
+<script src="../JS/conducteur.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</body>
+</html>

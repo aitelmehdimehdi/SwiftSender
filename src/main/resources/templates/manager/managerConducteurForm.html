@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link rel="stylesheet" href="../CSS/managerStyle.css" />
+    <link rel="shortcut icon" href="../img/logo.png">
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+<div class="menu__wrapper">
+    <div class="menu__bar">
+        <a
+                href="/manager"
+                title="Logo"
+        >
+            <img
+                    class="logo"
+                    src="../img/logo.png"
+                    title='Logo'
+                    alt='Logo'
+            >
+        </a>
+        <span>ACCOUNT MANAGER </span>
+        <img
+                class="menu-icon"
+                src="assets/burger-menu.svg"
+                title='Burger Menu'
+                alt='Burger Menu'
+                onclick="toggleMenu(this)"
+        >
+        <ul class="navigation">
+            <li><a href="/manager">
+                <!-- <i class="fas fa-home"></i> -->
+                <span class="nav-item">Home</span>
+            </a>
+            </li>
+            <li>
+                <a href="/manager/client">
+                    <!--<i class="fas fa-user"></i> -->
+                    <span class="nav-item">Client</span>
+                </a>
+            </li>
+            <li><a href="/manager/conducteur">
+                <!-- <i class="fas fa-user"></i> -->
+                <span class="nav-item">Conducteur</span>
+            </a>
+            </li>
+            <li><a href="/manager/vehicule">
+                <!-- <i class="fas fa-car"></i> -->
+                <span class="nav-item">Vehicule</span>
+            </a>
+            </li>
+            <li><a href="/">
+
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Logout</span>
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<section class="main">
+    <section class="main-body">
+        <!-- Container1 -->
+        <div class="container1">
+            <form class="Form" method="post" action="/manager/addConducteur" th:object="${newConducteur}">
+                <div class="input__wrapper">
+                    <input type="text" class="input__field"
+                           placeholder="un text" name="nom">
+                    <label for class="input__label">
+                        Nom
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input type="text" class="input__field"
+                           placeholder="un text" name="prenom">
+                    <label for class="input__label">
+                        Prenom
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input type="email" placeholder="un text" name="email" class="input__field" >
+                    <label for class="input__label">
+                        Entrer l'email:
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input type="date"  placeholder="un text" name="dateNaissance" style="background-color:transparent">
+                    <label for class="input__label">
+                        date naissance
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input type="tel" name="telephone" placeholder="un text" class="input__field">
+                    <label  for class="input__label">
+                        Telephone
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input type="radio" name="genre" placeholder="un text" value="male" > male
+                    <input type="radio" name="genre" placeholder="un text" value="female" > female
+                    <label  for class="input__label">
+                        Genre
+                    </label>
+                </div>
+                <div class="input__wrapper">
+                    <input type="password" name="password" placeholder="un text" class="input__field">
+                    <label  for class="input__label">
+                        Conducteur compte password :
+                    </label>
+                </div>
+                <div class="button-validation">
+                    <button type="submit" class='cta-button' >
+                        Envoyer
+                    </button>
+                </div>
+            </form>
+            <!-- EndRequest Service Form -->
+            <p th:text="${message}">MMMMMMMMM</p>
+        </div>
+    </section>
+</section>
+</body>
+</html>            

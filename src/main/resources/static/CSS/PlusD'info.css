@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(132, 132, 132);
+    overflow-x: scroll;
+    overflow-y:hidden ;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    min-width: max-content;
+    height: 500px;
+    border-radius: 12px;
+    background-color:white;
+    padding-top: 2%;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    cursor :pointer;
+}
+
+.card .title h1 {
+    font-family: Gilroy;
+    color: black;
+    font-size: 2rem;
+    text-align: center;
+    padding: 2%;
+}
+
+.card .title p {
+    font-family: Open Sans;
+    color: black;
+    text-align: center;
+}
+
+.card .image {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.card .image .outer {
+    background-color: crimson;
+    height: 120px;
+    width: 120x;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .image .inner {
+    height: 125px;
+    width: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.card .image .inner img {
+    width: 100%;
+}
+
+.card .name {
+    color:black;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+.card .details {
+    background-color: black;
+    height: 40%;
+    margin-top: 10%;
+    border-top-left-radius: 75px;
+    padding: 7%;
+    color: white;
+    font-family: Open Sans;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    border-top: 5px solid crimson;
+}
+
+.card .details .col{
+    width: max-content;
+}
+
+.card .details .col img{
+    width: 50%;
+}
+
+.card .details .col:last-child {
+    width: max-content;
+}
+
+.card .details li{
+    margin-top: 2%;
+    font-size: 0.75rem;
+}
+.card .details td{
+    margin-top: 2%;
+    font-size: 0.75rem;
+    width: max-content;
+    margin-left: 0px;
+}
+.card .details table{
+    width: max-content;
+}
+
+.card .details .col:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-skills{
+    display:flex;
+
+}
+.main-skills .card{
+    /* width: 100%; */
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 30px;
+    padding: 0px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+  

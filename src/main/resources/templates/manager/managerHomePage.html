@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link rel="stylesheet" href="../CSS/managerStyle.css" />
+    <link rel="shortcut icon" href="../img/logo.png">
+    <!-- Font Awesome Cdn Link -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />-->
+</head>
+<body>
+<div class="menu__wrapper">
+    <div class="menu__bar">
+        <a
+                href="/manager"
+                title="Logo"
+        >
+            <img
+                    class="logo"
+                    src="../img/logo.png"
+                    title='Logo'
+                    alt='Logo'
+            >
+        </a>
+        <span>ACCOUNT MANAGER </span>
+        <img
+                class="menu-icon"
+                src="assets/burger-menu.svg"
+                title='Burger Menu'
+                alt='Burger Menu'
+                onclick="toggleMenu(this)"
+        >
+        <ul class="navigation">
+            <li><a href="/manager">
+                <!-- <i class="fas fa-home"></i> -->
+                <span class="nav-item">Home</span>
+            </a>
+            </li>
+            <li>
+                <a href="/manager/client">
+                    <!--<i class="fas fa-user"></i> -->
+                    <span class="nav-item">Client</span>
+                </a>
+            </li>
+            <li><a href="/manager/conducteur">
+                <!-- <i class="fas fa-user"></i> -->
+                <span class="nav-item">Conducteur</span>
+            </a>
+            </li>
+            <li><a href="/manager/vehicule">
+                <!-- <i class="fas fa-car"></i> -->
+                <span class="nav-item">Vehicule</span>
+            </a>
+            </li>
+            <!--<li><a href="#">
+                <i class="fas fa-cog"></i>
+            </a>
+                <span class="nav-item">Setting</span>
+            </li>-->
+
+            <li><a href="/">
+
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Logout</span>
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<section class="main">
+    <section>
+        <form method="get" action="/manager/searchService" th:object="${service}">
+            <div class="main-body">
+
+                <h1>Recherche du service par ID :</h1>
+
+                <div class="search_bar">
+                    <input type="search" placeholder="Taper l'ID du service..." name="num_service">
+
+                    <select class="filter" name="typeVehicule">
+                        <option value="null">Type Vehicule</option>
+                        <option value="camion">Camion</option>
+                        <option value="remorque">C.remorque</option>
+                        <option value="transit">Trafic</option>
+                        <option value="pickup">Pick up</option>
+                    </select>
+                    <a class="search_button">
+                        <button style="color: gray;" type="submit">SEARCH</button>
+                    </a>
+
+                </div>
+            </div>
+        </form>
+        <div class="main-top2">
+            <h2>Service Trouvée:</h2>
+        </div>
+        <div class="historique">
+            <table width="100%">
+                <thead>
+                <tr>
+                    <td>Service Id</td><!--num_service-->
+                    <td>Ville S vers D</td>
+                    <td>Type Vehicule</td>
+                    <td>nombreVehicule</td>
+                    <td>price</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each=" service : ${serviceSearched}">
+                    <td class="people">
+                        <div>
+                            <h5 th:text="${service.num_service}"></h5>
+
+                        </div>
+                    </td>
+                    <td class="people-des">
+                        <h5 th:text="${service.villeSource}"></h5>
+                        <p th:text="${service.villeDest}"></p>
+                    </td>
+                    <td class="people-des">
+                        <h5 th:text="${service.typeVehicule}"></h5>
+                    </td>
+                    <td class="type Vehicule">
+                        <h5 th:text="${service.nombreVehicule}"></h5>
+                    </td>
+                    <td class="price">
+                        <h5 th:text="${service.price}"></h5>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="main1">
+        <div class="main-top1">
+            <h2>Dashboard :</h2>
+        </div>
+        <div class="main-skills">
+            <div class="card">
+                <i class="fas fa-solid fa-briefcase"></i>
+                <h3>Services Actives</h3>
+                <p>Le nombre des services actives</p>
+                <button th:text="${nbrServiceActive}"></button>
+            </div>
+            <div class="card">
+                <i class="fas fa-user"></i>
+                <h3>Clients totale</h3>
+                <p>Le nombre des Clients totale</p>
+                <button th:text="${nbrClients}"></button>
+            </div>
+            <div class="card">
+                <i class="fas fa-solid fa-truck"></i>
+                <h3>Vehicules totale</h3>
+                <p>Le nombre des Vehicules totale</p>
+                <button th:text="${nbrVehicules}"></button>
+            </div>
+            <div class="card">
+                <i class="fas fa-solid fa-briefcase"></i>
+                <h3>Services totale</h3>
+                <p>Le nombre des Services totale</p>
+                <button th:text="${nbrServices}"></button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="main-top2">
+            <h2>Derniers Services:</h2>
+        </div>
+        <div class="historique">
+            <table width="100%">
+                <thead>
+                <tr>
+                    <td>Full Name</td>
+                    <td>Ville S vers D</td>
+                    <td>Service ID</td>
+                    <td>Telephone</td>
+                    <td>Active</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="service : ${services}">
+                    <td class="people">
+                        <div>
+                            <h5 th:text="${service.clientEntity.fullname}">a</h5>
+                            <p th:text="${service.clientEntity.email}">b</p>
+                        </div>
+                    </td>
+                    <td class="people-des">
+                        <h5 th:text="${service.villeSource}">c </h5>
+                        <p th:text="${service.villeDest}">d</p>
+                    </td>
+                    <td class="Id">
+                        <h5 th:text="${service.num_service}"></h5>
+                    </td>
+                    <td class="tele">
+                        <h5 th:text="${service.clientEntity.telephone}"></h5>
+                    </td>
+                    <td class="Id">
+                        <h5 th:text="${service.active}"></h5>
+                    </td>
+                    <td class="edit">
+                        <a th:href=@{'/manager/service_details/'+${service.num_service}}>More infos</a>
+                    </td>
+                    <td class="delete">
+                        <a th:href=@{'/manager/finService/'+${service.num_service}}>Bloquer</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+</div>
+
+</body>
+</html>

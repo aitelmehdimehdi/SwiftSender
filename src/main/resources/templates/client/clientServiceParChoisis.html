@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../CSS/clientStyle.css">
+    <title>SwiftSender</title>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <a href="/client" class="logo">
+        <div class="logo-name" id="logo-name"><span>S</span>wift<span>S</span>ender</div>
+    </a>
+    <ul class="side-menu">
+        <li ><a href="/client"><i class='bx bxs-dashboard'></i>Home</a></li>
+        <li ><a href="/client/service"><i class='bx bx-store-alt'></i>Service</a></li>
+        <li ><a href="/client/allService"><i class='bx bx-analyse'></i>Tous Services</a></li>
+        <!--<li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
+        <li><a href="#"><i class='bx bx-group'></i>Users</a></li> -->
+        <li><a href="/client/profil"><i class='bx bx-cog'></i>Settings</a></li>
+    </ul>
+    <ul class="side-menu">
+        <li>
+            <a href="/logOut" class="logout">
+                <i class='bx bx-log-out-circle'></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- End of Sidebar-->
+<!-- Main Content-->
+<div class="content">
+    <!-- Navbar -->
+    <nav>
+        <i class='bx bx-menu'></i>
+        <form action="#">
+            <div class="form-input">
+                <input type="search" placeholder="Search...">
+                <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="theme-toggle" hidden>
+        <label for="theme-toggle" class="theme-toggle"></label>
+        <a href="#" class="notif">
+            <i class='bx bx-bell'></i>
+            <span class="count">12</span>
+        </a>
+        <a href="#" class="profile">
+            <img src="../img/logo.png">
+        </a>
+    </nav>
+    <!-- End of Navbar -->
+    <main>
+
+
+        <!-- dashboard -->
+        <!-- Container -->
+        <div class="container">
+            <!-- Request Service Form -->
+            <article class="card">
+                <div class='background'>
+                    <form class="Form" method="post" action="/client/service1" th:object="${service_request}">
+                        
+                        <div class="input__wrapper">
+                            <input  type="text" class="input__field"
+                                   placeholder="un text" name="villeSource">
+                            <label for class="input__label">
+                                ville Source
+                            </label>
+                        </div>
+
+                        <div class="input__wrapper">
+                            <input  type="text" class="input__field"
+                                   placeholder="un text" name="villeDest">
+                            <label for class="input__label">
+                                ville Destination
+                            </label>
+                        </div>
+
+                        <div class="input__wrapper">
+                            <!-- Champ de sélection -->
+                            <select id="vehicleType" class="input__field" name="typeVehicule">
+                                <!-- Options pour le type de véhicule -->
+                                <option value="" disabled selected hidden>Type de véhicule</option>
+                                <option value="camion">Camion</option>
+                                <option value="remorque">Camion remorque</option>
+                                <option value="transportencommun">Traffic</option>
+                                <option value="pickupvoiture">Pick up</option>
+                            </select>
+
+                            <!-- Étiquette associée au champ de sélection -->
+                            <label for="vehicleType" class="input__label">
+                            </label>
+                        </div>
+
+                        <div class="input__wrapper">
+                            <!-- Champ de saisie pour la date -->
+                            <input id="dateInput" type="date" class="input__field" name="dateService">
+
+                            <!-- Étiquette associée au champ de saisie -->
+                            <label for="dateInput" class="input__label">
+                            </label>
+                        </div>
+
+
+                        <div class="input__wrapper">
+                            <input  type="number" class="input__field"
+                                   placeholder="un text" name="nombreVehicule">
+                            <label for class="input__label">
+                                Nombre de vehicule
+                            </label>
+                        </div>
+
+                
+                <!-- EndRequest Service Form -->
+                <div class="button-validation">
+                    <button type="submit" class='cta-button' >
+                        Envoyer
+                    </button>
+                </div>
+                <p class="serv-valid-mess" th:text="${svalid}"></p>
+                <p class="serv-invalid-mess" th:text="${sinvalid}"></p>
+                </form>
+            </div>
+            </article>
+        </div>
+        <!-- End Container -->
+        <!-- End Of Planning -->
+    </main>
+</div>
+
+<script src="../JS/client.js"></script>
+<script src="../JS/conducteur.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</body>
+</html>

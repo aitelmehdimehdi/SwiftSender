@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link rel="stylesheet" href="../../static/CSS/managerStyle.css" />
+    <link rel="stylesheet" href="../CSS/managerStyle.css" />
+    <link rel="shortcut icon" href="../img/logo.png">
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+<div class="menu__wrapper">
+    <div class="menu__bar">
+        <a
+                href="/manager"
+                title="Logo"
+        >
+            <img
+                    class="logo"
+                    src="../img/logo.png"
+                    title='Logo'
+                    alt='Logo'
+            >
+        </a>
+        <span>ACCOUNT MANAGER </span>
+        <img
+                class="menu-icon"
+                src="assets/burger-menu.svg"
+                title='Burger Menu'
+                alt='Burger Menu'
+                onclick="toggleMenu(this)"
+        >
+        <ul class="navigation">
+            <li><a href="/manager">
+                <!-- <i class="fas fa-home"></i> -->
+                <span class="nav-item">Home</span>
+            </a>
+            </li>
+            <li>
+                <a href="/manager/client">
+                    <!--<i class="fas fa-user"></i> -->
+                    <span class="nav-item">Client</span>
+                </a>
+            </li>
+            <li><a href="/manager/conducteur">
+                <!-- <i class="fas fa-user"></i> -->
+                <span class="nav-item">Conducteur</span>
+            </a>
+            </li>
+            <li><a href="/manager/vehicule">
+                <!-- <i class="fas fa-car"></i> -->
+                <span class="nav-item">Vehicule</span>
+            </a>
+            </li>
+            <li><a href="/">
+
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Logout</span>
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<section class="main">
+    <section class="main-body">
+        <div class="main-top1">
+            <h2>Dashboard :</h2>
+        </div>
+        <div class="main-skills">
+            <div class="card">
+                <i class="fas fa-user"></i>
+                <h3>Conducteurs Actives</h3>
+                <p>Le nombre des conducteurs actives(actuel)</p>
+                <button th:text="${nbrCondDeActive}"></button>
+            </div>
+            <div class="card">
+                <i class="fas fa-user"></i>
+                <h3>Conducteurs de jour</h3>
+                <p>Le nombre des conducteurs d'aujourd'hui</p>
+                <button th:text="${nbrCondDeJour}"></button>
+            </div>
+            <div class="card">
+                <i class="fas fa-user"></i>
+                <h3>Conducteurs du semaine</h3>
+                <p>Le nombre des conducteur du semaine</p>
+                <button th:text="${nbrCondtDeSemaine}"></button>
+            </div>
+            <div class="card">
+                <i class="fas fa-user"></i>
+                <h3>Conducteurs du mois</h3>
+                <p>Le nombre  des conducteurs du mois</p>
+                <button th:text="${nbrCondDeMois}"></button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="main-top2">
+            <h2>Liste des conducteur:</h2>
+        </div>
+        <div class="historique">
+            <a class="button" href="/manager/addConducteur">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Ajouter un conducteur</span>
+                </span>
+            </a>
+            <table width="100%">
+                <thead>
+                <tr>
+                    <td>Full Name</td>
+                    <td>Email</td>
+                    <td>Date Naissance</td>
+                    <td>Telephone</td>
+                    <td>Active</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="conducteur : ${conducteurs}">
+                    <td class="people">
+                        <div>
+                            <h5 th:text="${conducteur.fullname}">Abdellah Lachgueur</h5>
+                            <p ></p>
+                        </div>
+                    </td>
+                    <td class="people-des">
+                        <h5 th:text="${conducteur.email}">Inzegane </h5>
+                    </td>
+                    <td class="vehicule">
+                        <h5 th:text="${conducteur.dateNaissance}" >Pick up</h5>
+                    </td>
+                    <td class="tele">
+                        <h5 th:text="${conducteur.telephone}">0612345678</h5>
+                    </td>
+                    <td class="tele">
+                        <h5 th:text="${conducteur.active}">0612345678</h5>
+                    </td>
+                    <td class="edit">
+                        <a th:href=@{'updateConducteur/'+${conducteur.email}}>Modifie</a>
+                    </td>
+                    <td class="edit">
+                        <a th:href=@{'conducteur_details/'+${conducteur.email}}>more_infos</a>
+                    </td>
+                    <td class="delete">
+                        <a th:href=@{'deleteConducteur/'+${conducteur.email}}>supprimer</a>
+                    </td>
+                </tr>
+                <!--
+                <tr>
+                    <td class="add">
+                        <a href="/manager/addConducteur"><button>Ajouter un conducteur...</button></a>
+                    </td>
+                </tr>
+                -->
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+</section>
+
+</body>
+</html>

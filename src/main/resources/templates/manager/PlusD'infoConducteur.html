@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/PlusD'info.css">
+    <link rel="shortcut icon" href="../../img/logo.png">
+    <title>Information</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="title">
+                <h1>Conducteur</h1>
+                <p>Carte d'information</p>
+            </div>
+            <div class="image">
+                <div class="outer">
+                    <div class="inner">
+                        <img src="../../img/Conducteur.jpg" alt="Conducteur">
+                    </div>
+                </div>
+            </div>
+            <div class="name" th:text="${conducteur.fullname}">
+                Mehdi Ait Elmehdi
+            </div>
+            <div class="details">
+                <div class="col">
+                    <ul type="none">
+                        <li>Active: <p th:text="${conducteur.active}"></p></li>
+                        <li><p>Genre: </p><p th:text="${conducteur.genre}"></p></p></li>
+                        <li><p>DateNaissance: </p><p th:text="${conducteur.dateNaissance}"></p></li>
+                        <li><p>Telephone: </p> <p th:text="${conducteur.telephone}"></p></li>
+                        <li>Email:  <p th:text="${conducteur.email}"></p></li>
+                        <li>Salary:  <p th:text="${conducteur.salary}"></p></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <img src="../../img/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

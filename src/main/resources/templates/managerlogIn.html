@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="../CSS/styleLOG.css">
+
+    <title>SwiftSender</title>
+</head>
+<body>
+<section>
+    <div class="div">
+        <!--LOGO SECTION-->
+        <div class="logo">
+            <a class="logo-name" href="/">
+                <div><span>S</span>wift<span>S</span>ender</div>
+            </a>
+        </div>
+        <!--end LOGO SECTION-->
+        <h2>LOG IN</h2>
+        <form id="loginForm" action="/managerLogIn" method="post" th:object="${connect}">
+            <label  >Email</label>
+            <input type="email" placeholder="exemple : votrename@gmail.com" id="email" name="email" required autofocus>
+            <label  >Password</label>
+            <input type="password" id="password" name="password" required>
+            <a href="clientHomePage.html"><input type="submit" value="LOG IN"></a>
+            <p th:text="${message}" class="alertmessage"></p>
+            <p class="secondAccesWay">
+                <a href="/signup" class="inscrire">S'inscrire ?</a></p>
+        </form>
+    </div>
+</section>
+
+<script src=""></script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="../CSS/styleSign.css">
+    <title>SwiftSender</title>
+</head>
+<body>
+
+<section>
+    <div class="div">
+        <!--LOGO SECTION-->
+        <div class="logo">
+            <a class="logo-name" href="/">
+                <div><span>S</span>wift<span>S</span>ender</div>
+            </a>
+        </div>
+        <!--end LOGO SECTION-->
+
+
+        <h2>SIGN UP</h2>
+        <form id="RegistroForm" action="/signup" method="post" th:object="${addclient}">
+            <label >Prenom</label>
+            <input type="text" placeholder="prenom"  name="prenom" required autofocus>
+            <label >Nom</label>
+            <input type="text" placeholder="nom" name="nom" required autofocus>
+            <label >Telephone</label>
+            <input type="text" placeholder="telephone"  name="telephone" required autofocus>
+            <label  >Email</label>
+            <input type="email" placeholder="exemple : votrename@gmail.com" id="email" name="email" required autofocus>
+            <label >genre : </label>
+            <label class="genre">
+                <a >male : </a>
+                <input type="radio" name="genre" value="male">
+                <a > female : </a>
+                <input type="radio"   name="genre" value="female">
+            </label>
+            <label >date de naissance</label>
+            <input type="date"  id="name" name="DateNaissance" required autofocus>
+            <label  >Password</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="SIGN UP">
+            <p th:text="${message}" class="alertmessage"></p>
+            <p class="secondAccesWay1" ><a href="/login" >LOG IN! </a></p>
+        </form>
+    </div>
+</section>
+
+
+<script src=""></script>
+</body>
+</html>

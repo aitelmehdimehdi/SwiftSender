@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/PlusD'info.css">
+    <link rel="shortcut icon" href="../../img/logo.png">
+    <title>Information</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="title">
+                <h1>Vehicule</h1>
+                <p>Carte d'information</p>
+            </div>
+            <div class="image">
+                <div class="outer">
+                    <div class="inner">
+                        <img src="../../img/pick_up.jpg" alt="Client">
+                    </div>
+                </div>
+            </div>
+            <div class="name" th:text="${vehicule.typeVehicule}">
+                Pick up
+            </div>
+            <div class="details">
+                <div class="col">
+                    <ul type="none">
+                        <li><p>Matricule : </p><p th:text="${vehicule.matricule}"></p></li>
+                        <li><p>Active : </p><p th:text="${vehicule.active}"></p></li>
+                        <li><p>dateDeFinDassurance : </p><p th:text="${vehicule.dateDeFinDassurance}"></p></li>
+                        <li><p>dateDeFinVisite : </p><p th:text="${vehicule.nextVisite}"></p></li>
+                        <li><p>dateDeFinCarteGris : </p><p th:text="${vehicule.carteGrise}"></p></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <img src="../../img/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

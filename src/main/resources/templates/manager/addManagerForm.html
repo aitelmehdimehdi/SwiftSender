@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="/manager/managerCreation/addmanager/add" th:object="${newManager}">
+        <label >nom : </label>
+        <input name="nom" type="text">
+        <label> prenom :  </label>
+        <input name="prenom" type="text">
+        <label> email :  </label>
+        <input name="email" type="text">
+        <label> password :  </label>
+        <input name="password" type="password">
+        <button type="submit"> Valider </button>
+    </form>
+</body>
+</html>

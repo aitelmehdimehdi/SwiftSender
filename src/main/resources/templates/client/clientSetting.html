@@ -1,0 +1,140 @@
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>-->
+        <link rel="shortcut icon" href="../img/logo.png">
+        <link rel="stylesheet" href="../CSS/clientStyle.css">
+        <!--<link rel="stylesheet" href="../static/CSS/clientStyle.css">-->
+        <title>SwiftSender</title>
+    </head>
+
+    <body>
+
+    <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="/client" class="logo">
+                <div class="logo-name" id="logo-name"><span>S</span>wift<span>S</span>ender</div>
+            </a>
+            <ul class="side-menu">
+                <li ><a href="/client" ><i class='bx bxs-dashboard'></i>Home</a></li>
+                 <li><a href="/client/service" ><i class='bx bx-store-alt'></i>Service</a></li>
+                <li ><a href="/client/allService"><i class='bx bx-analyse'></i>Tous Services</a></li>
+                <!--<li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
+                <li><a href="#"><i class='bx bx-group'></i>Users</a></li>-->
+                <li><a href="/client/profil" ><i class='bx bx-cog'></i>Settings</a></li>
+            </ul>
+            <ul class="side-menu">
+                <li>
+                    <a href="/logOut" class="logout">
+                        <i class='bx bx-log-out-circle'></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    <!-- End of Sidebar -->
+    <!-- Main Content -->
+        <div class="content">
+            <!-- Navbar -->
+            <nav>
+                <i class='bx bx-menu'></i>
+                <form action="#">
+                    <div class="form-input">
+                        <input type="search" placeholder="Search...">
+                        <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                    </div>
+                </form>
+                <input type="checkbox" id="theme-toggle" hidden>
+                <label for="theme-toggle" class="theme-toggle"></label>
+                <a href="#" class="notif">
+                    <i class='bx bx-bell'></i>
+                    <span class="count">12</span>
+                </a>
+                <a href="#" class="profile">
+                    <img src="../img/logo.png">
+                </a>
+            </nav>
+    <!-- End of Navbar -->
+
+            <main>
+                <div class="container">
+                    <section class="setting-section">
+                        <form action="/client/profil" method="get" >
+                        <table class="setting-table">
+                        <tr height="60px">
+                        <div class="set-field">
+                                <td width="20%">
+                                    <label class="lab-set">prenom : </label>
+                                </td>
+                                <td>
+                                    <input class="input__field" name="prenom" th:value="${clientInfos.prenom}"  readonly>
+                                </td>
+                        </div>
+                        </tr>
+                        <tr height="60px">
+                        <div class="set-field">
+
+                                <td width="20%">
+                                    <label class="lab-set">nom : </label>
+                                </td>
+                                <td>
+                                    <input class="input__field" name="nom" th:value="${clientInfos.nom}" readonly>
+                                </td>
+                            </div>
+                        </tr>
+                        <tr height="60px">
+                        <div class="set-field">
+                                <td width="20%">
+                                    <label class="lab-set">genre : </label>
+                                </td>
+                                <td>
+                                    <input class="input__field" name="genre" th:value="${clientInfos.genre}" readonly>
+                                </td>
+                            </div>
+                        </tr>
+                        <tr height="60px">
+                        <div class="set-field">
+                                <td width="20%">
+                                    <label class="lab-set">date naissance : </label>
+                                </td>
+                                <td>
+                                    <input class="input__field" name="date-naissance" th:value="${clientInfos.dateNaissance}" readonly>
+                                </td>
+                            </div>
+                        </tr>
+                        <tr height="60px">
+                        <div class="set-field">
+                                <td width="20%">
+                                    <label class="lab-set">telephone : </label>
+                                </td>
+                                <td>
+                                    <input class="input__field" name="telephone" th:value="${clientInfos.telephone}"  readonly>
+                                </td>
+                            </div>
+                        </tr>
+                        <tr height="60px">
+                        <div class="set-field">
+                                <td width="20%">
+                                    <label class="lab-set">email : </label>
+                                </td>
+                                <td>
+                                    <input class="input__field" name="email" th:value="${clientInfos.email}" readonly>
+                                </td>
+                        </div>
+                        </tr>
+                        </table>
+                        <a href="/client/setting"><div class="set-button"><p>Modifier Vos Infos</p></div></a>
+                        <a href="/client/mot_de_passe"><div class="pswd-button"><p>Changer le Mot de pass</p></div></a>
+                    </form>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+        <script src="../JS/client.js"></script>
+    </body>
+
+    </html>
