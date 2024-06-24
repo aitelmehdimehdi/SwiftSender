@@ -11,9 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -40,19 +38,19 @@ public class conducteurController {
             model.addAttribute("salaire", conducteur.getSalary().toString());
             if (conducteurService.getAllServiceInVille(conducteur).size() > 4) {
                 List<ServiceHistorique> serviceHistoriqueIn= conducteurService.getAllServiceInVille(conducteur);
-                Collections.sort(serviceHistoriqueIn, new HistoriqueComparator());
+                serviceHistoriqueIn.sort(new HistoriqueComparator());
                 model.addAttribute("servicesInVille", serviceHistoriqueIn.subList(0, 4));
             } else
                 model.addAttribute("servicesInVille", conducteurService.getAllServiceInVille(conducteur));
             if (conducteurService.getAllServiceOutVille(conducteur).size() > 4) {
                 List<ServiceHistorique> serviceHistoriqueOut= conducteurService.getAllServiceOutVille(conducteur);
-                Collections.sort(serviceHistoriqueOut, new HistoriqueComparator());
+                serviceHistoriqueOut.sort(new HistoriqueComparator());
                 model.addAttribute("servicesOutVille", serviceHistoriqueOut.subList(0, 4));
             } else
                 model.addAttribute("servicesOutVille", conducteurService.getAllServiceOutVille(conducteur));
             if (conducteurService.getAllService(conducteur).size() > 6) {
                 List<ServiceHistorique> serviceHistorique= conducteurService.getAllService(conducteur);
-                Collections.sort(serviceHistorique, new HistoriqueComparator());
+                serviceHistorique.sort(new HistoriqueComparator());
                 model.addAttribute("services",serviceHistorique.subList(0, 6));
             } else
                 model.addAttribute("services", conducteurService.getAllService(conducteur));
@@ -67,7 +65,7 @@ public class conducteurController {
     {
         ConducteurEntity conducteur= (ConducteurEntity) session.getAttribute("conducteurLoggedIn");
         List<ServiceHistorique> conducteurEntities=conducteurService.getAllService(conducteur);
-        Collections.sort(conducteurEntities, new HistoriqueComparator());
+        conducteurEntities.sort(new HistoriqueComparator());
         model.addAttribute("services",conducteurEntities);
         return "conducteur/ConducteurService";
     }
@@ -77,8 +75,8 @@ public class conducteurController {
         List<ServiceHistorique> serviceHistoriques=historiqueService.findAllById(id);
         ClientEntity client=serviceHistoriques.getFirst().getClientEntity();
         ServiceEntity service=serviceHistoriques.getFirst().getServiceEntity();
-        List<ConducteurEntity> conducteurs=new ArrayList<ConducteurEntity>();
-        List<Vehicule> vehicules=new ArrayList<Vehicule>();
+        List<ConducteurEntity> conducteurs=new ArrayList<>();
+        List<Vehicule> vehicules=new ArrayList<>();
         for(ServiceHistorique historique : serviceHistoriques) {
             conducteurs.add(historique.getConducteurEntity());
             vehicules.add(historique.getVehicule());
@@ -99,18 +97,18 @@ public class conducteurController {
 
 
     @GetMapping("serviceIn/{id}")
-    public String serviceInCity(@PathVariable("id") Integer id, HttpSession session, Model model)
+    public String serviceInCity(@PathVariable("id") Integer id,Model model)
     {
         ServiceEntity service=serviceService.findById(id);
-        ConducteurEntity conducteur= (ConducteurEntity) session.getAttribute("conducteurLoggedIn");
+        //ConducteurEntity conducteur= (ConducteurEntity) session.getAttribute("conducteurLoggedIn");
         model.addAttribute("services",service);
         return "conducteur/ChoixDansVille";
     }
     @GetMapping("serviceOut/{id}")
-    public String serviceOutCity(@PathVariable("id") Integer id,HttpSession session,Model model)
+    public String serviceOutCity(@PathVariable("id") Integer id,Model model)
     {
         ServiceEntity service=serviceService.findById(id);
-        ConducteurEntity conducteur= (ConducteurEntity) session.getAttribute("conducteurLoggedIn");
+        //ConducteurEntity conducteur= (ConducteurEntity) session.getAttribute("conducteurLoggedIn");
         model.addAttribute("services",service);
         return "conducteur/ChoixDansVille";
     }

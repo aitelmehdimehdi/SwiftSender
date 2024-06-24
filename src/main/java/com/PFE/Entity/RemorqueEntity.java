@@ -12,18 +12,18 @@ import java.time.LocalDate;
 public class RemorqueEntity extends Vehicule {
 
     public RemorqueEntity(String matricule , LocalDate finAssurance , LocalDate visite,LocalDate grise){
-        super(matricule,4000,400,Double.valueOf(14),finAssurance,visite,grise);
+        super(matricule,4000,400, 14.0,finAssurance,visite,grise);
         this.typeVehicule=this.getClass().getSimpleName();
     }
 
     @Override
     public Integer getTarifInside() {
-        return Integer.valueOf(799);
+        return 799;
     }
 
     @Override
     public Integer getTarifOutside() {
-        return Integer.valueOf(1499);
+        return 1499;
     }
 
     @Override

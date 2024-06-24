@@ -14,18 +14,18 @@ public class PickUpVoitureEntity extends Vehicule {
 
 
     public PickUpVoitureEntity(String matricule , LocalDate finAssurance , LocalDate visite,LocalDate grise){
-        super(matricule,400,50,Double.valueOf(5),finAssurance,visite,grise);
+        super(matricule,400,50, 5.0,finAssurance,visite,grise);
         this.typeVehicule=this.getClass().getSimpleName();
     }
 
     @Override
     public Integer getTarifInside() {
-        return Integer.valueOf(99);
+        return 99;
     }
 
     @Override
     public Integer getTarifOutside() {
-        return Integer.valueOf(399);
+        return 399;
     }
 
     @Override

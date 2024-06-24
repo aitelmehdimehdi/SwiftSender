@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -46,7 +47,7 @@ public abstract class Person {
     {
         for(CompteEntity cmp : compte)
         {
-            if(cmp.getTypeCompte()==type)
+            if(Objects.equals(cmp.getTypeCompte(), type))
                 return cmp;
         }
         return null;

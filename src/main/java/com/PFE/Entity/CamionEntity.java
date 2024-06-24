@@ -17,12 +17,12 @@ public class CamionEntity extends Vehicule {
 
     @Override
     public Integer getTarifInside() {
-        return Integer.valueOf(599);
+        return 599;
     }
 
 
     public Integer getTarifOutside() {
-        return Integer.valueOf(999);
+        return 999;
     }
 
     @Override

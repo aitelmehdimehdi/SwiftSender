@@ -6,15 +6,12 @@ import com.PFE.etc.PasswordChanging.ChangePassword;
 import com.PFE.etc.Comparators.ServiceComparator;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,10 +21,8 @@ import java.util.Objects;
 public class clientController {
     private final ClientService clientService;
     private final ServiceService serviceService;
-    private final ManagerService managerService;
-    @Autowired
+    //private final ManagerService managerService;
     private final EmailSender mailSender;
-    @Autowired
     private final ServiceHistoriqueService historiqueService;
 
 
@@ -56,9 +51,9 @@ public class clientController {
     }
 
     @GetMapping("service1")
-    public String pageService1(Model model , HttpSession session)
+    public String pageService1(Model model )
     {
-        ClientEntity client = (ClientEntity) session.getAttribute("clientLoggedIn");
+        //ClientEntity client = (ClientEntity) session.getAttribute("clientLoggedIn");
         model.addAttribute("service_request",new ServiceEntity());
         return "client/clientServiceParChoisis";
     }
@@ -80,9 +75,8 @@ public class clientController {
     }
 
     @GetMapping("service2")
-    public String pageService2(Model model , HttpSession session)
+    public String pageService2(Model model )
     {
-        ClientEntity client = (ClientEntity) session.getAttribute("clientLoggedIn");
         model.addAttribute("service_request",new ServiceEntity());
         return "client/clientServiceParDesc";
     }
@@ -140,7 +134,7 @@ public class clientController {
     }
 
     @GetMapping("mot_de_passe")
-    public String pagePassword(Model model , HttpSession session)
+    public String pagePassword(Model model)
     {
         model.addAttribute("changePass",new ChangePassword());
         return "client/clientChangePassword";
@@ -175,7 +169,7 @@ public class clientController {
     {
         ClientEntity client= (ClientEntity) session.getAttribute("clientLoggedIn");
         List<ServiceEntity> services= serviceService.getAllServiceByClient(client);
-        Collections.sort(services,new ServiceComparator());
+        services.sort(new ServiceComparator());
         model.addAttribute("services",services);
         return "client/clientAllServices";
     }
@@ -185,8 +179,8 @@ public class clientController {
         List<ServiceHistorique> serviceHistoriques=historiqueService.findAllById(id);
         ClientEntity client=serviceHistoriques.getFirst().getClientEntity();
         ServiceEntity service=serviceHistoriques.getFirst().getServiceEntity();
-        List<ConducteurEntity> conducteurs=new ArrayList<ConducteurEntity>();
-        List<Vehicule> vehicules=new ArrayList<Vehicule>();
+        List<ConducteurEntity> conducteurs=new ArrayList<>();
+        List<Vehicule> vehicules=new ArrayList<>();
         for(ServiceHistorique historique : serviceHistoriques) {
                 conducteurs.add(historique.getConducteurEntity());
                 vehicules.add(historique.getVehicule());

@@ -51,7 +51,7 @@ public class ServiceEntity {
             , List<Vehicule> vehicule, String vSource , String vDest, Integer marchandise, ConducteurEntity ... conducteurEntities){
         this.nombreVehicule = nombreVehicule;
         this.clientEntity = clientEntity;
-        this.conducteur= new LinkedList<ConducteurEntity>();
+        this.conducteur= new LinkedList<>();
         this.vehicule= new LinkedList<>();
         this.villeSource=vSource;
         this.villeDest=vDest;
@@ -71,10 +71,10 @@ public class ServiceEntity {
             this.price=(double) (vehicule.getFirst().getTarifOutside()*nombreVehicule);
         conducteur.addAll(Arrays.asList(conducteurEntities));
         Iterator<Vehicule> it=this.vehicule.iterator();
-        for(int i=0 ;i< conducteurEntities.length ; i++) {
-            conducteurEntities[i].setActive(true);
-            conducteurEntities[i].setService(this);
-            conducteurEntities[i].setVehicule(it.next());
+        for (ConducteurEntity conducteurEntity : conducteurEntities) {
+            conducteurEntity.setActive(true);
+            conducteurEntity.setService(this);
+            conducteurEntity.setVehicule(it.next());
         }
         this.active=true;
     }
@@ -85,25 +85,22 @@ public class ServiceEntity {
 
     public  String toString()
     {
-        String var= "------------------------Facture----------------------------"
-                +"\n n°Service : " + getNum_service()
-                +"\n Nom : "+clientEntity.getNom()
-                +"\n Prenom : "+clientEntity.getPrenom()
-                +"\n nombre de vehicules : "+nombreVehicule
-                +"\n Conducteurs : ";
+        StringBuilder var= new StringBuilder("------------------------Facture----------------------------"
+                + "\n n°Service : " + getNum_service()
+                + "\n Nom : " + clientEntity.getNom()
+                + "\n Prenom : " + clientEntity.getPrenom()
+                + "\n nombre de vehicules : " + nombreVehicule
+                + "\n Conducteurs : ");
         for(ConducteurEntity conducteur1 : conducteur) {
-            var+="\n \tnom : "+conducteur1.getNom()+" - prenom : "+conducteur1.getPrenom()+" - phone : "+conducteur1.getTelephone();
+            var.append("\n \tnom : ").append(conducteur1.getNom()).append(" - prenom : ").append(conducteur1.getPrenom()).append(" - phone : ").append(conducteur1.getTelephone());
         }
-        var+="\nVehicules : ";
+        var.append("\nVehicules : ");
         for(Vehicule vehicule1 : vehicule) {
-            var+="\n \tMatricule : "+vehicule1.getMatricule()+" - Type de vehicule : "+vehicule1.getTypeVehicule();
+            var.append("\n \tMatricule : ").append(vehicule1.getMatricule()).append(" - Type de vehicule : ").append(vehicule1.getTypeVehicule());
         }
-        var+="\n Prix : "+price
-             +"\n Date service : "+dateService
-            +"\n ---------------------------------"
-            +"\n "+LocalDate.now();
+        var.append("\n Prix : ").append(price).append("\n Date service : ").append(dateService).append("\n ---------------------------------").append("\n ").append(LocalDate.now());
 
-        return var;
+        return var.toString();
     }
 
 }

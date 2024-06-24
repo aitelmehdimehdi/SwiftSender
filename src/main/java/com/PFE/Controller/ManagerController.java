@@ -9,7 +9,6 @@ import com.PFE.etc.Comparators.ServiceComparator;
 import com.PFE.etc.Comparators.VehiculeComparator;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +51,7 @@ public class ManagerController {
             model.addAttribute("nbrVehicules", managerService.countVehicules());
             //add sorted method
             List<ServiceEntity> services= managerService.getAllServices();
-            Collections.sort(services,new ServiceComparator());
+            services.sort(new ServiceComparator());
             if (services.size() > 7) {
                 List<ServiceEntity> serviceEntities = services.subList(0, 7);
                 model.addAttribute("services", serviceEntities);
@@ -67,11 +66,11 @@ public class ManagerController {
     @GetMapping("service_details/{num_service}")
     public String moreServiceInfo(@PathVariable("num_service") Integer id , Model model)
     {
-        List<ServiceHistorique> serviceHistoriques=managerService.getHistoriqueServiceById(id);;
+        List<ServiceHistorique> serviceHistoriques=managerService.getHistoriqueServiceById(id);
         ClientEntity client=serviceHistoriques.getFirst().getClientEntity();
         ServiceEntity service=serviceHistoriques.getFirst().getServiceEntity();
-        List<ConducteurEntity> conducteurs=new ArrayList<ConducteurEntity>();
-        List<Vehicule> vehicules=new ArrayList<Vehicule>();
+        List<ConducteurEntity> conducteurs=new ArrayList<>();
+        List<Vehicule> vehicules=new ArrayList<>();
         for(ServiceHistorique historique : serviceHistoriques) {
             conducteurs.add(historique.getConducteurEntity());
             vehicules.add(historique.getVehicule());
@@ -147,7 +146,7 @@ public class ManagerController {
     public String homeClient(Model model)
     {
         List<ClientEntity> clients=managerService.getAllClients();
-        Collections.sort(clients,new ClientComparator());
+        clients.sort(new ClientComparator());
         model.addAttribute("clients",clients);
         model.addAttribute("todayNbrClients",managerService.countTodayClient());
         model.addAttribute("NbrClientsActive",managerService.countClientActive());
@@ -168,13 +167,13 @@ public class ManagerController {
     public String homeConducteur(Model model)
     {
         List<ConducteurEntity> conducteurs=managerService.getAllConducteurs();
-        Collections.sort(conducteurs,new ConducteurComparator());
+        conducteurs.sort(new ConducteurComparator());
         model.addAttribute("conducteurs",conducteurs);
         model.addAttribute("nbrCondDeActive",managerService.countCondActive());
         model.addAttribute("nbrCondDeJour",managerService.countTodayConds());
         model.addAttribute("nbrCondtDeSemaine",managerService.countThisWeekConds());
         model.addAttribute("nbrCondDeMois",managerService.countThisMounthConds());
-        ConducteurEntity conducteur=(ConducteurEntity) model.getAttribute("conducteur.email");
+        //ConducteurEntity conducteur=(ConducteurEntity) model.getAttribute("conducteur.email");
         return "manager/managerConducteur";
     }
     @GetMapping("addConducteur")
@@ -215,12 +214,12 @@ public class ManagerController {
         return "manager/managerConducteurUpdateForm";
     }
     @PostMapping("updateConducteur")
-    public String updateConducteur(HttpSession session,Model model,@ModelAttribute ConducteurEntity conducteur)
+    public String updateConducteur(HttpSession session,@ModelAttribute ConducteurEntity conducteur)
     {
         ConducteurEntity conducteur1= (ConducteurEntity) session.getAttribute("pointedCond");
         if(managerService.updateConducteur(conducteur1.getEmail(),conducteur)){
             session.setAttribute("pointedCond",managerService.getConducteurByEmail(conducteur1.getEmail()));
-        };
+        }
         return "redirect:/manager/updateConducteur";
     }
 
@@ -232,7 +231,7 @@ public class ManagerController {
         model.addAttribute("nbrTraffics",managerService.countTraffics());
         model.addAttribute("nbrPickUps",managerService.countPickUp());
         List<Vehicule> vehicules=managerService.getAllVehicules();
-        Collections.sort(vehicules,new VehiculeComparator());
+        vehicules.sort(new VehiculeComparator());
         model.addAttribute("vehicules",vehicules);
         model.addAttribute("service" , new ServiceEntity());
         return "manager/managerVehicule";
@@ -320,29 +319,29 @@ public class ManagerController {
         return "manager/managerVehiculeUpdateForm";
     }
     @PostMapping("updateVehicule")
-    public String updateVehicule(HttpSession session,Model model,@ModelAttribute Vehicule vehicule)
+    public String updateVehicule(HttpSession session,@ModelAttribute Vehicule vehicule)
     {
         Vehicule vehicule1= (Vehicule) session.getAttribute("pointedVehicule");
 
         if(Objects.equals(vehicule1.getTypeVehicule(), CamionEntity.class.getSimpleName())){
             if(managerService.updateCamion(vehicule1.getMatricule(), vehicule)){
                 session.setAttribute("pointedVehicule",managerService.getVehiculeByMatrAndType(vehicule.getMatricule(),CamionEntity.class.getSimpleName()));
-            };
+            }
         }
         if(Objects.equals(vehicule1.getTypeVehicule(), PickUpVoitureEntity.class.getSimpleName())){
             if(managerService.updatePickUp(vehicule1.getMatricule(), vehicule)){
                 session.setAttribute("pointedVehicule",managerService.getVehiculeByMatrAndType(vehicule.getMatricule(),PickUpVoitureEntity.class.getSimpleName()));
-            };
+            }
         }
         if(Objects.equals(vehicule1.getTypeVehicule(), TransportEnCommunEntity.class.getSimpleName())){
             if(managerService.updateTransit(vehicule1.getMatricule(), vehicule)){
                 session.setAttribute("pointedVehicule",managerService.getVehiculeByMatrAndType(vehicule.getMatricule(),TransportEnCommunEntity.class.getSimpleName()));
-            };
+            }
         }
         if(Objects.equals(vehicule1.getTypeVehicule(), RemorqueEntity.class.getSimpleName())){
             if(managerService.updateRemorque(vehicule1.getMatricule(), vehicule)){
                 session.setAttribute("pointedVehicule",managerService.getVehiculeByMatrAndType(vehicule.getMatricule(),RemorqueEntity.class.getSimpleName()));
-            };
+            }
         }
 
         return "redirect:/manager/updateVehicule";

@@ -96,12 +96,11 @@ public class ConnectionEtSignup{
                 }
             }
             model.addAttribute("message", "password incorrect");
-            return "login2";
         }
         else {
             model.addAttribute("message", "compte introuvable , sign up");
-            return "login2";
         }
+        return "login2";
     }
 
     @GetMapping("/managerLogIn")
@@ -112,8 +111,8 @@ public class ConnectionEtSignup{
     @PostMapping("/managerLogIn")
     public String Managerlogin(@ModelAttribute CompteEntity compte,Model model,HttpSession session)
     {
-        ClientEntity client=new ClientEntity();
-        ConducteurEntity conducteur=new ConducteurEntity();
+        //ClientEntity client=new ClientEntity();
+        //ConducteurEntity conducteur=new ConducteurEntity();
         if(compteService.existsByEmail(compte.getEmail()))
         {
             PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
@@ -129,12 +128,11 @@ public class ConnectionEtSignup{
                 }
             }
             model.addAttribute("message", "password incorrect");
-            return "managerlogIn";
         }
         else {
             model.addAttribute("message", "compte introuvable , contactez nous");
-            return "managerlogIn";
         }
+        return "managerlogIn";
     }
 
 
