@@ -1,6 +1,5 @@
 package com.PFE.Service;
 
-import com.PFE.Assembler.ClientAssembler;
 import com.PFE.Entity.ClientEntity;
 import com.PFE.Entity.CompteEntity;
 import com.PFE.Entity.ServiceEntity;
@@ -10,14 +9,10 @@ import com.PFE.Repositry.CompteRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.tool.schema.spi.SqlScriptException;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.Objects;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Service
 @RequiredArgsConstructor

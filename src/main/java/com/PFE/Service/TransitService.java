@@ -1,15 +1,11 @@
 package com.PFE.Service;
 
-import com.PFE.Assembler.TransitAssembler;
 import com.PFE.Entity.*;
 import com.PFE.Exeption.VehiculeNotFound;
 import com.PFE.Repositry.TransitRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Service
 @RequiredArgsConstructor
@@ -83,7 +79,7 @@ public class TransitService {
     {
         if(!transitRepository.existsById(matricule))
             return false;
-        if(transitRepository.getById(matricule).getActive())
+        if(transitRepository.getReferenceById(matricule).getActive())
             return false;
 //        TransportEnCommunEntity car= transitRepository.findById(matricule).orElseThrow(
 //                ()->new VehiculeNotFound(matricule)
@@ -99,9 +95,8 @@ public class TransitService {
             return false;
         TransportEnCommunEntity transit=transitRepository.findById(matricule).orElseThrow(()->new VehiculeNotFound(matricule));
         transit.setService(service);
-        if(transitRepository.save(transit) != null)
-            return true;
-        return false;
+        transitRepository.save(transit);
+        return true;
     }
 
 

@@ -1,16 +1,12 @@
 package com.PFE.Service;
 
-
-import com.PFE.Assembler.RemorqueAssembler;
 import com.PFE.Entity.*;
 import com.PFE.Exeption.VehiculeNotFound;
 import com.PFE.Repositry.RemorqueRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 
 @Service
@@ -84,7 +80,7 @@ public class RemorqueService {
     {
         if(!remorqueRepository.existsById(matricule))
             return false;
-        if(remorqueRepository.getById(matricule).getActive())
+        if(remorqueRepository.getReferenceById(matricule).getActive())
             return false;
 //        RemorqueEntity car= remorqueRepository.findById(matricule).orElseThrow(
 //                ()->new VehiculeNotFound(matricule)
@@ -100,8 +96,7 @@ public class RemorqueService {
             return false;
         RemorqueEntity remorque=remorqueRepository.findById(matricule).orElseThrow(()->new VehiculeNotFound(matricule));
         remorque.setService(service);
-        if(remorqueRepository.save(remorque) != null)
-            return true;
-        return false;
+        remorqueRepository.save(remorque);
+        return true;
     }
 }

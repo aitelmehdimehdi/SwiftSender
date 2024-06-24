@@ -1,19 +1,13 @@
 package com.PFE.Service;
 
-import com.PFE.Assembler.CamionAssembler;
 import com.PFE.Entity.CamionEntity;
-import com.PFE.Entity.ConducteurEntity;
 import com.PFE.Entity.ServiceEntity;
 import com.PFE.Entity.Vehicule;
-import com.PFE.Exeption.ConducteurNotFound;
 import com.PFE.Exeption.VehiculeNotFound;
 import com.PFE.Repositry.CamionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 @Service
 @RequiredArgsConstructor
@@ -87,7 +81,7 @@ public class CamionService {
         if(!camionRepository.existsById(matricule)){
             return false;
         }
-        if(camionRepository.getById(matricule).getActive())
+        if(camionRepository.getReferenceById(matricule).getActive())
             return false;
 //        CamionEntity camion=camionRepository.findById(
 //                matricule).orElseThrow(() -> new VehiculeNotFound(matricule));
@@ -102,8 +96,7 @@ public class CamionService {
             return false;
         CamionEntity camion=camionRepository.findById(matricule).orElseThrow(()->new VehiculeNotFound(matricule));
         camion.setService(service);
-        if(camionRepository.save(camion) != null)
-            return true;
-        return false;
+        camionRepository.save(camion);
+        return true;
     }
 }

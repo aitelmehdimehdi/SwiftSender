@@ -1,7 +1,5 @@
 package com.PFE.Service;
 
-import com.PFE.Assembler.PickUpVoitureAssembler;
-import com.PFE.Entity.CamionEntity;
 import com.PFE.Entity.PickUpVoitureEntity;
 import com.PFE.Entity.ServiceEntity;
 import com.PFE.Entity.Vehicule;
@@ -9,10 +7,7 @@ import com.PFE.Exeption.VehiculeNotFound;
 import com.PFE.Repositry.PickUpVoitureRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 
 @Service
@@ -86,7 +81,7 @@ public class PickUpVoitureService {
     {
         if(!pickupvoitureRepository.existsById(matricule))
             return false;
-        if(pickupvoitureRepository.getById(matricule).getActive())
+        if(pickupvoitureRepository.getReferenceById(matricule).getActive())
             return false;
 //        PickUpVoitureEntity pick= pickupvoitureRepository.findById(matricule).orElseThrow(
 //                ()->new VehiculeNotFound(matricule)
@@ -102,9 +97,8 @@ public class PickUpVoitureService {
             return false;
         PickUpVoitureEntity pick=pickupvoitureRepository.findById(matricule).orElseThrow(()->new VehiculeNotFound(matricule));
         pick.setService(service);
-        if(pickupvoitureRepository.save(pick) != null)
-            return true;
-        return false;
+        pickupvoitureRepository.save(pick);
+        return true;
     }
 
 }

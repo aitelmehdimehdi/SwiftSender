@@ -3,7 +3,6 @@ package com.PFE.Service;
 import com.PFE.Entity.ManagerEntity;
 import com.PFE.Entity.ServiceEntity;
 import com.PFE.Entity.Vehicule;
-import com.PFE.Repositry.ManagerRepository;
 import com.PFE.Repositry.ServiceHistoriqueRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
